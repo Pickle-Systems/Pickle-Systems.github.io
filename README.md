@@ -1,2 +1,2 @@
-# PickleLabs-Tech.github.io
-🥒 Official website for PickleLabs-Tech — building local AI tools, desktop software, and innovative technology projects.
+# PickleForge-Labs.github.io/
+🥒 Official website for PickleForge-Labs — building local AI tools, desktop software, and innovative technology projects.
