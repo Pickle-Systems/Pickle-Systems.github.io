@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,209 +7,301 @@
 <title>PickleForge-Labs</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    color:white;
     background:
-    radial-gradient(circle at top left, #2563eb, transparent 35%),
-    radial-gradient(circle at bottom right, #7c3aed, transparent 35%),
-    #050816;
-    color: white;
+        radial-gradient(circle at 10% 0%,rgba(37,99,235,.35),transparent 32%),
+        radial-gradient(circle at 90% 10%,rgba(124,58,237,.28),transparent 30%),
+        #050816;
+    min-height:100vh;
 }
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
+.container{
+    width:min(1080px,calc(100% - 40px));
+    margin:auto;
 }
 
-.hero {
-    text-align: center;
-    padding: 80px 20px;
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 0;
 }
 
-.logo {
-    font-size: 90px;
+.brand{
+    font-weight:800;
+    font-size:20px;
 }
 
-h1 {
-    font-size: 64px;
-    margin: 10px;
-    background: linear-gradient(90deg, #60a5fa, #a78bfa);
-    -webkit-background-clip: text;
-    color: transparent;
+nav a{
+    color:#cbd5e1;
+    text-decoration:none;
+    margin-left:18px;
 }
 
-.subtitle {
-    font-size: 24px;
-    color: #cbd5e1;
+.hero{
+    text-align:center;
+    padding:85px 20px 70px;
 }
 
-.card {
-    background: rgba(15,23,42,.85);
-    padding: 30px;
-    margin: 25px 0;
-    border-radius: 25px;
-    border: 1px solid rgba(255,255,255,.1);
-    backdrop-filter: blur(10px);
+.logo{
+    font-size:90px;
+    filter:drop-shadow(0 0 30px rgba(124,58,237,.4));
 }
 
-h2 {
-    color: #93c5fd;
+h1{
+    font-size:clamp(48px,8vw,78px);
+    margin:15px 0;
+    background:linear-gradient(90deg,#60a5fa,#a78bfa,#c084fc);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
 }
 
-.button {
-    display: inline-block;
-    background: #2563eb;
-    color: white;
-    padding: 14px 30px;
-    border-radius: 15px;
-    text-decoration: none;
-    margin-top: 20px;
-    font-weight: bold;
+.subtitle{
+    font-size:27px;
+    color:#cbd5e1;
 }
 
-.button:hover {
-    background: #60a5fa;
+.hero p{
+    color:#94a3b8;
+    line-height:1.7;
 }
 
-.project {
-    background: #111827;
-    padding: 20px;
-    border-radius: 18px;
-    margin-top: 15px;
+.card{
+    background:rgba(15,23,42,.68);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:26px;
+    padding:32px;
+    margin:25px 0;
+    backdrop-filter:blur(18px);
 }
 
-footer {
-    text-align: center;
-    padding: 40px;
-    color: #94a3b8;
+h2{
+    color:#93c5fd;
+    font-size:30px;
 }
 
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+}
+
+.project{
+    padding:25px;
+    border-radius:20px;
+    background:rgba(17,24,39,.78);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.project h3{
+    font-size:23px;
+}
+
+.project p{
+    color:#94a3b8;
+    line-height:1.6;
+}
+
+.button{
+    display:inline-block;
+    margin-top:12px;
+    padding:13px 22px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    color:white;
+    text-decoration:none;
+    font-weight:800;
+}
+
+.button.secondary{
+    background:#111827;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.v2{
+    border-color:rgba(168,85,247,.3);
+    background:
+        radial-gradient(circle at 100% 0%,rgba(124,58,237,.2),transparent 40%),
+        rgba(15,23,42,.72);
+}
+
+.v2-badge{
+    display:inline-block;
+    background:rgba(124,58,237,.18);
+    color:#d8b4fe;
+    padding:7px 12px;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:800;
+}
+
+footer{
+    text-align:center;
+    padding:55px;
+    color:#64748b;
+}
+
+@media(max-width:650px){
+    nav a{
+        display:none;
+    }
+
+    .hero{
+        padding-top:45px;
+    }
+}
 </style>
-
 </head>
-
 
 <body>
 
 <div class="container">
 
+<nav>
+    <div class="brand">🥒⚒️ PickleForge-Labs</div>
+
+    <div>
+        <a href="#projects">Projects</a>
+        <a href="#vision">Vision</a>
+    </div>
+</nav>
 
 <section class="hero">
 
-<div class="logo">
-🥒⚒️
-</div>
+    <div class="logo">🥒⚒️</div>
 
-<h1>
-PickleForge-Labs
-</h1>
+    <h1>PickleForge-Labs</h1>
 
-<p class="subtitle">
-Building the future of AI and software.
-</p>
+    <p class="subtitle">
+        Forging the future of software.
+    </p>
 
-<p>
-Creating local AI tools, desktop applications,
-and open-source technology.
-</p>
+    <p>
+        Building local AI tools, desktop applications,
+        security software, and open-source technology.
+    </p>
 
 </section>
 
+<section class="card v2">
 
+    <span class="v2-badge">🚀 WHAT'S NEXT</span>
 
-<div class="card">
+    <h2>PickleAI v2.0 is Coming Soon</h2>
 
-<h2>
-🤖 Projects
-</h2>
+    <p>
+        The next generation of PickleAI is being built with smarter
+        automation, stronger computer control, improved model support,
+        and a redesigned interface.
+    </p>
 
+    <a class="button"
+       href="https://github.com/PickleForge-Labs/PickleAI">
+        View PickleAI
+    </a>
 
-<div class="project">
+</section>
 
-<h3>
-🥒 PickleAI
-</h3>
+<section class="card" id="projects">
 
-<p>
-A local AI desktop assistant with memory,
-PC control, automation, and Ollama support.
-</p>
+    <h2>🧩 Projects</h2>
 
-<a class="button" href="https://pickleforge-labs.github.io/PickleAI/">
-Visit PickleAI
-</a>
+    <div class="project-grid">
+
+        <div class="project">
+
+            <h3>🥒 PickleAI</h3>
+
+            <p>
+                A local AI desktop assistant with memory,
+                PC control, automation, local models,
+                and Ollama support.
+            </p>
+
+            <a class="button"
+               href="https://pickleforge-labs.github.io/PickleAI/">
+                Visit PickleAI
+            </a>
+
+            <a class="button secondary"
+               href="https://github.com/PickleForge-Labs/PickleAI">
+                GitHub
+            </a>
+
+        </div>
+
+        <div class="project">
+
+            <h3>🔐 PicklePass</h3>
+
+            <p>
+                A security-focused password manager project
+                from PickleForge-Labs.
+            </p>
+
+            <a class="button"
+               href="https://github.com/PickleForge-Labs/PicklePass">
+                View PicklePass
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card" id="vision">
+
+    <h2>⚒️ About PickleForge-Labs</h2>
+
+    <p>
+        PickleForge-Labs builds creative software, AI assistants,
+        security tools, and technology designed to give users
+        powerful software they can customize.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>🧠 Our Vision</h2>
+
+    <p>
+        Build the next generation of personal AI, automation systems,
+        privacy-focused software, and open technology.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>📜 Open Source</h2>
+
+    <p>
+        PickleForge-Labs supports open-source software and
+        community-driven development.
+    </p>
+
+</section>
 
 </div>
-
-
-</div>
-
-
-
-<div class="card">
-
-<h2>
-⚒️ About PickleForge-Labs
-</h2>
-
-<p>
-PickleForge-Labs builds creative software,
-AI assistants, and tools designed to give
-users powerful technology they can customize.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>
-🧠 Our Vision
-</h2>
-
-<p>
-Building the next generation of personal AI,
-automation systems, and open technology.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>
-📜 Open Source
-</h2>
-
-<p>
-PickleForge-Labs supports open-source software
-and community-driven development.
-</p>
-
-</div>
-
-
-
-</div>
-
 
 <footer>
-
-🥒⚒️ PickleForge-Labs<br>
-Forging the future of software.
-
+    🥒⚒️ <strong>PickleForge-Labs</strong><br>
+    Forging the future of software.
 </footer>
 
-
 </body>
-
 </html>
