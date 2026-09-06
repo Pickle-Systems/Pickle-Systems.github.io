@@ -1,237 +1,867 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PickleForge-Labs</title>
+<meta name="theme-color" content="#050505">
+<meta name="description" content="Pickle Systems — building personal AI, security software, and technology designed around user control.">
+<title>Pickle Systems — Technology that feels like yours.</title>
 
 <style>
-
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: #050505;
 }
 
 body {
-    margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                 "Segoe UI", sans-serif;
+    background: #050505;
+    color: #f5f5f7;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+::selection {
+    background: #fff;
+    color: #000;
+}
+
+:root {
+    --bg: #050505;
+    --surface: #0c0c0e;
+    --surface-2: #111114;
+    --border: rgba(255,255,255,.10);
+    --muted: #929296;
+    --soft: #c9c9ce;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -30%;
+    z-index: -2;
     background:
-    radial-gradient(circle at top left, #2563eb, transparent 35%),
-    radial-gradient(circle at bottom right, #7c3aed, transparent 35%),
-    #050816;
-    color: white;
+        radial-gradient(circle at 25% 20%, rgba(105,75,255,.13), transparent 28%),
+        radial-gradient(circle at 80% 35%, rgba(0,180,255,.09), transparent 26%),
+        radial-gradient(circle at 50% 90%, rgba(255,255,255,.04), transparent 25%);
+    pointer-events: none;
 }
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
-}
-
-.hero {
-    text-align: center;
-    padding: 80px 20px;
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 58px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    background: rgba(5,5,5,.72);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 }
 
 .logo {
-    font-size: 90px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -.5px;
 }
 
-h1 {
-    font-size: 64px;
-    margin: 10px;
-    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    color: #a7a7ad;
+    font-size: 13px;
+}
+
+.nav-links a {
+    transition: color .25s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.nav-button {
+    padding: 8px 15px;
+    border-radius: 999px;
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    font-size: 13px;
+    transition: transform .25s ease, opacity .25s ease;
+}
+
+.nav-button:hover {
+    transform: scale(1.04);
+    opacity: .9;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 70px;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(111,82,255,.18), transparent 68%);
+    filter: blur(15px);
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 1150px;
+    position: relative;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 13px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 999px;
+    background: rgba(255,255,255,.035);
+    color: #b7b7bd;
+    font-size: 12px;
+    margin-bottom: 28px;
+}
+
+.eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 12px rgba(255,255,255,.8);
+}
+
+.hero h1 {
+    font-size: clamp(60px, 10vw, 144px);
+    line-height: .9;
+    letter-spacing: -7px;
+    font-weight: 700;
+    background: linear-gradient(180deg, #fff 5%, #fff 38%, #77777d 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
-.subtitle {
-    font-size: 24px;
-    color: #cbd5e1;
+.hero p {
+    max-width: 650px;
+    margin: 35px auto 0;
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.5;
+    color: #99999f;
 }
 
-.card {
-    background: rgba(15,23,42,.85);
-    padding: 30px;
-    margin: 25px 0;
-    border-radius: 25px;
-    border: 1px solid rgba(255,255,255,.1);
-    backdrop-filter: blur(10px);
-}
-
-h2 {
-    color: #93c5fd;
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 36px;
+    flex-wrap: wrap;
 }
 
 .button {
-    display: inline-block;
-    background: #2563eb;
-    color: white;
-    padding: 14px 30px;
-    border-radius: 15px;
-    text-decoration: none;
-    margin-top: 20px;
-    margin-right: 8px;
-    font-weight: bold;
+    padding: 13px 21px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: transform .25s ease, background .25s ease;
+}
+
+.button.primary {
+    background: #fff;
+    color: #000;
+}
+
+.button.secondary {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.10);
+    color: #fff;
 }
 
 .button:hover {
-    background: #60a5fa;
+    transform: translateY(-2px);
 }
 
-.project {
-    background: #111827;
-    padding: 20px;
-    border-radius: 18px;
-    margin-top: 15px;
+.scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #626267;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.section {
+    padding: 150px 7vw;
+    position: relative;
+}
+
+.section-inner {
+    max-width: 1250px;
+    margin: auto;
+}
+
+.intro {
+    max-width: 1000px;
+}
+
+.kicker {
+    color: #707075;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.big-copy {
+    font-size: clamp(42px, 6vw, 84px);
+    line-height: .98;
+    letter-spacing: -4px;
+    font-weight: 650;
+}
+
+.big-copy span {
+    color: #626267;
+}
+
+.sub-copy {
+    max-width: 650px;
+    margin-top: 30px;
+    color: #96969b;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.products {
+    margin-top: 90px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.product-card {
+    min-height: 560px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.018));
+    padding: 42px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .4s ease, border-color .4s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(255,255,255,.18);
+}
+
+.product-card.ai::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: -180px;
+    right: -150px;
+    background: radial-gradient(circle, rgba(91,72,255,.20), transparent 68%);
+}
+
+.product-card.pass::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: -180px;
+    right: -150px;
+    background: radial-gradient(circle, rgba(0,190,150,.14), transparent 68%);
+}
+
+.product-number {
+    color: #77777c;
+    font-size: 12px;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.product-name {
+    font-size: clamp(44px, 5vw, 72px);
+    letter-spacing: -4px;
+    font-weight: 700;
+    margin-top: 60px;
+    position: relative;
+}
+
+.product-description {
+    color: #99999f;
+    line-height: 1.65;
+    font-size: 16px;
+    max-width: 480px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.product-link {
+    margin-top: 35px;
+    display: inline-flex;
+    width: fit-content;
+    padding: 11px 17px;
+    border-radius: 999px;
+    background: #fff;
+    color: #000;
+    font-size: 13px;
+    font-weight: 650;
+    position: relative;
+}
+
+.feature-grid {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.glass-card {
+    padding: 34px;
+    min-height: 230px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: rgba(255,255,255,.035);
+}
+
+.card-number {
+    font-size: 11px;
+    color: #66666b;
+    letter-spacing: 2px;
+}
+
+.glass-card h3 {
+    font-size: 27px;
+    margin-top: 50px;
+    letter-spacing: -1px;
+}
+
+.glass-card p {
+    margin-top: 12px;
+    color: #89898e;
+    line-height: 1.6;
+}
+
+.dark-section {
+    background: #f3f3f3;
+    color: #090909;
+}
+
+.dark-section .kicker {
+    color: #777;
+}
+
+.dark-section .big-copy span {
+    color: #a1a1a1;
+}
+
+.dark-section .sub-copy {
+    color: #666;
+}
+
+.value-list {
+    margin-top: 80px;
+    border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.value-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 1.3fr;
+    gap: 25px;
+    padding: 34px 0;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    align-items: start;
+}
+
+.value-row .num {
+    color: #888;
+    font-size: 12px;
+}
+
+.value-row h3 {
+    font-size: 28px;
+    letter-spacing: -1px;
+}
+
+.value-row p {
+    color: #666;
+    line-height: 1.65;
+}
+
+.cta {
+    text-align: center;
+    padding: 180px 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta::before {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: radial-gradient(circle, rgba(100,80,255,.12), transparent 68%);
+}
+
+.cta h2 {
+    position: relative;
+    font-size: clamp(48px, 8vw, 110px);
+    letter-spacing: -6px;
+    line-height: .95;
+}
+
+.cta p {
+    position: relative;
+    max-width: 570px;
+    margin: 28px auto 35px;
+    color: #8d8d92;
+    font-size: 18px;
+    line-height: 1.6;
 }
 
 footer {
-    text-align: center;
-    padding: 40px;
-    color: #94a3b8;
+    padding: 30px 7vw;
+    border-top: 1px solid rgba(255,255,255,.07);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: #66666b;
+    font-size: 12px;
 }
 
-</style>
+footer strong {
+    color: #aaa;
+}
 
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 800px) {
+    nav {
+        padding: 0 18px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        letter-spacing: -4px;
+    }
+
+    .section {
+        padding: 100px 22px;
+    }
+
+    .big-copy {
+        letter-spacing: -2px;
+    }
+
+    .products,
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        min-height: 480px;
+        padding: 30px;
+    }
+
+    .value-row {
+        grid-template-columns: 45px 1fr;
+    }
+
+    .value-row p {
+        grid-column: 2;
+    }
+
+    .cta {
+        padding: 120px 24px;
+    }
+
+    .cta h2 {
+        letter-spacing: -3px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<nav>
+    <a class="logo" href="#">Pickle Systems</a>
 
-<section class="hero">
+    <div class="nav-links">
+        <a href="#products">Products</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#vision">Vision</a>
+        <a href="https://github.com/PickleForge-Labs">GitHub</a>
+    </div>
 
-<div class="logo">
-🥒⚒️
-</div>
+    <a class="nav-button" href="#products">Explore</a>
+</nav>
 
-<h1>
-PickleForge-Labs
-</h1>
+<header class="hero">
+    <div class="hero-content reveal">
+        <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Personal technology
+        </div>
 
-<p class="subtitle">
-Building the future of AI and software.
-</p>
+        <h1>
+            Technology<br>
+            that feels like yours.
+        </h1>
 
-<p>
-Creating local AI tools, desktop applications,
-and open-source technology.
-</p>
+        <p>
+            Pickle Systems builds personal software, AI tools,
+            and security-focused technology around one idea:
+            powerful technology should belong to the person using it.
+        </p>
 
+        <div class="hero-buttons">
+            <a class="button primary" href="#products">Explore products</a>
+            <a class="button secondary" href="https://github.com/PickleForge-Labs">
+                View GitHub
+            </a>
+        </div>
+    </div>
+
+    <div class="scroll-hint">SCROLL TO EXPLORE</div>
+</header>
+
+<section class="section">
+    <div class="section-inner">
+        <div class="intro reveal">
+            <div class="kicker">01 — PICKLE SYSTEMS</div>
+
+            <div class="big-copy">
+                Software should work
+                <span>for you.</span>
+            </div>
+
+            <p class="sub-copy">
+                Pickle Systems is an independent software ecosystem focused
+                on useful, personal technology. From AI assistants to security
+                tools, the goal is simple: create software that gives people
+                more capability without taking away control.
+            </p>
+        </div>
+    </div>
 </section>
 
+<section class="section" id="products">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="kicker">02 — PRODUCTS</div>
 
-<div class="card">
+            <div class="big-copy">
+                Two projects.<br>
+                <span>One direction.</span>
+            </div>
+        </div>
 
-<h2>
-🤖 Projects
-</h2>
+        <div class="products">
 
+            <article class="product-card ai reveal">
+                <div>
+                    <div class="product-number">01 / AI</div>
 
-<div class="project">
+                    <div class="product-name">PickleAI</div>
 
-<h3>
-🥒 PickleAI
-</h3>
+                    <p class="product-description">
+                        A personal AI assistant designed to remember,
+                        understand, and help you actually get things done.
+                        PickleAI brings local AI, memory, PC control,
+                        automation, and everyday assistance together.
+                    </p>
+                </div>
 
-<p>
-A local AI desktop assistant with memory,
-PC control, automation, and Ollama support.
-</p>
+                <a class="product-link"
+                   href="https://pickleforge-labs.github.io/PickleAI/">
+                    Explore PickleAI
+                </a>
+            </article>
 
-<a class="button"
-   href="https://pickleforge-labs.github.io/PickleAI/">
-Visit PickleAI
-</a>
+            <article class="product-card pass reveal">
+                <div>
+                    <div class="product-number">02 / SECURITY</div>
 
-</div>
+                    <div class="product-name">PicklePass</div>
 
+                    <p class="product-description">
+                        A security-focused password manager built around
+                        privacy, user control, and a straightforward desktop
+                        experience.
+                    </p>
+                </div>
 
-<div class="project">
+                <a class="product-link"
+                   href="https://pickleforge-labs.github.io/PicklePass/">
+                    Explore PicklePass
+                </a>
+            </article>
 
-<h3>
-🔐 PicklePass
-</h3>
+        </div>
+    </div>
+</section>
 
-<p>
-A security-focused password manager project
-from PickleForge-Labs.
-</p>
+<section class="section" id="philosophy">
+    <div class="section-inner">
 
-<a class="button"
-   href="https://pickleforge-labs.github.io/PicklePass/">
-Visit PicklePass
-</a>
+        <div class="reveal">
+            <div class="kicker">03 — PHILOSOPHY</div>
 
-<a class="button"
-   href="https://github.com/PickleForge-Labs/PicklePass">
-GitHub
-</a>
+            <div class="big-copy">
+                Built around
+                <span>control.</span>
+            </div>
 
-</div>
+            <p class="sub-copy">
+                Pickle Systems is built with a preference for software
+                that is understandable, customizable, and useful.
+                The technology should serve the user — not the other
+                way around.
+            </p>
+        </div>
 
+        <div class="feature-grid">
 
-</div>
+            <div class="glass-card reveal">
+                <div class="card-number">01</div>
+                <h3>Personal</h3>
+                <p>
+                    Tools should adapt to the person using them instead
+                    of forcing everyone into the same workflow.
+                </p>
+            </div>
 
+            <div class="glass-card reveal">
+                <div class="card-number">02</div>
+                <h3>Private</h3>
+                <p>
+                    Personal technology should give users meaningful
+                    control over their data and how their software works.
+                </p>
+            </div>
 
-<div class="card">
+            <div class="glass-card reveal">
+                <div class="card-number">03</div>
+                <h3>Useful</h3>
+                <p>
+                    Technology should do more than look impressive.
+                    It should solve real problems and save real time.
+                </p>
+            </div>
 
-<h2>
-⚒️ About PickleForge-Labs
-</h2>
+            <div class="glass-card reveal">
+                <div class="card-number">04</div>
+                <h3>Open</h3>
+                <p>
+                    Open development makes software easier to explore,
+                    improve, understand, and build upon.
+                </p>
+            </div>
 
-<p>
-PickleForge-Labs builds creative software,
-AI assistants, and tools designed to give
-users powerful technology they can customize.
-</p>
+        </div>
+    </div>
+</section>
 
-</div>
+<section class="section dark-section">
+    <div class="section-inner">
 
+        <div class="reveal">
+            <div class="kicker">04 — WHAT WE BUILD</div>
 
-<div class="card">
+            <div class="big-copy">
+                Small software.<br>
+                <span>Big possibilities.</span>
+            </div>
 
-<h2>
-🧠 Our Vision
-</h2>
+            <p class="sub-copy">
+                The Pickle Systems ecosystem can grow in many directions,
+                but every project starts from the same foundation:
+                make technology more capable while keeping the experience
+                simple.
+            </p>
+        </div>
 
-<p>
-Building the next generation of personal AI,
-automation systems, and open technology.
-</p>
+        <div class="value-list">
 
-</div>
+            <div class="value-row reveal">
+                <div class="num">01</div>
+                <h3>AI</h3>
+                <p>
+                    Personal assistants and intelligent tools designed
+                    to become useful parts of everyday computing.
+                </p>
+            </div>
 
+            <div class="value-row reveal">
+                <div class="num">02</div>
+                <h3>Automation</h3>
+                <p>
+                    Software that can connect intelligence with actions,
+                    helping turn conversations into useful results.
+                </p>
+            </div>
 
-<div class="card">
+            <div class="value-row reveal">
+                <div class="num">03</div>
+                <h3>Security</h3>
+                <p>
+                    Tools designed with privacy and user control as
+                    important parts of the experience.
+                </p>
+            </div>
 
-<h2>
-📜 Open Source
-</h2>
+            <div class="value-row reveal">
+                <div class="num">04</div>
+                <h3>Open software</h3>
+                <p>
+                    Projects that can be explored, developed, tested,
+                    and improved in public.
+                </p>
+            </div>
 
-<p>
-PickleForge-Labs supports open-source software
-and community-driven development.
-</p>
+        </div>
+    </div>
+</section>
 
-</div>
+<section class="section" id="vision">
+    <div class="section-inner">
 
+        <div class="reveal">
+            <div class="kicker">05 — THE VISION</div>
 
-</div>
+            <div class="big-copy">
+                The computer<br>
+                should feel <span>personal.</span>
+            </div>
 
+            <p class="sub-copy">
+                Pickle Systems is working toward an ecosystem where
+                personal AI, automation, security, and everyday software
+                can work together naturally.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="cta">
+    <h2 class="reveal">
+        Welcome to<br>
+        Pickle Systems.
+    </h2>
+
+    <p class="reveal">
+        Explore the projects, follow development, and see where
+        personal technology can go next.
+    </p>
+
+    <div class="hero-buttons reveal">
+        <a class="button primary"
+           href="https://pickleforge-labs.github.io/PickleAI/">
+            Explore PickleAI
+        </a>
+
+        <a class="button secondary"
+           href="https://pickleforge-labs.github.io/PicklePass/">
+            Explore PicklePass
+        </a>
+    </div>
+</section>
 
 <footer>
-
-🥒⚒️ PickleForge-Labs<br>
-Forging the future of software.
-
+    <div><strong>Pickle Systems</strong> — Building technology that feels like yours.</div>
+    <div>
+        <a href="https://github.com/PickleForge-Labs">GitHub</a>
+    </div>
 </footer>
 
+<script>
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    },
+    { threshold: 0.12 }
+);
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+</script>
 
 </body>
-
 </html>
-```
